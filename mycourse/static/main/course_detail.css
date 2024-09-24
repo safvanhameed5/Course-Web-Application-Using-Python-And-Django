@@ -2,6 +2,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
+    background-color: #1c1c1c;
+    color: #f8f8f8;
 }
 
 .main {
@@ -29,18 +31,23 @@ body {
 }
 
 .notes {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #3a3a3a;
     padding-top: 10px;
     font-size: 14px;
 }
 
 #notesField {
     width: 100%;
+    border-color: #3a3a3a;
+    background-color: #3a3a3a;
     padding-bottom: 10px;
 }
 
 #saveNotesButton {
     padding-top: 5px;
+    border-color: #3a3a3a;
+    background-color: #cd001a;
+    color: #f8f8f8;
     align: center;
 }
 /* Right section styles (Video list) */
@@ -49,7 +56,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    border-left: 1px solid #ddd;
+    border-left: 1px solid #3a3a3a;
 }
 
 .video-list {
@@ -60,13 +67,13 @@ body {
 .video {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #3a3a3a;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .video:hover {
-    background-color: #f0f0f0;
+    background-color: #3a3a3a;
 }
 
 .video h3 {
