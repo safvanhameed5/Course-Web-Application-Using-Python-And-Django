@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/course_list.css' %}">
+    <style>
+        /* Optionally, some simple styles to hide non-matching cards */
+        .card {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        .course-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<h1>Course</h1>
+    <div class="main">
+        <div class="filter">
+            <h2>Filter by:</h2>
+            <h3>Language</h3>
+            <ul>
+                {% for language in facets.course_language %}
+                    <li>{{ language.key }} ({{ language.doc_count }})</li>
+                {% endfor %}
+            </ul>
+            <h3>Duration</h3>
+            <ul>
+                {% for duration in facets.course_duration %}
+                    <li>{{ duration.key }} ({{ duration.doc_count }})</li>
+                {% endfor %}
+            </ul>
+            <h3>Subject</h3>
+            <ul>
+                {% for subject in facets.course_subject %}
+                    <li>{{ subject.key }} ({{ subject.doc_count }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="right">
+            <div class="search">
+                <input type="text" id="searchBox" placeholder="Search courses..." onkeyup="filterCourses()">
+            </div>
+            <div class="cards" id="courseCards">
+                {% for course in courses %}
+                    <div class="card">
+                        <img src="{{ course.image_url }}" alt="{{ course.course_name }}" class="thumbnail">
+                        <div class="course-info">
+                            <p>ID: {{ course.course_id }}</p>
+                            <h3 class="course-title">{{ course.course_name }}</h3>
+                            <p>{{ course.course_description }}</p>
+                            <a href="{% url 'course_detail' course.course_id %}">View Course</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterCourses() {
+            // Get the value of the search input
+            var searchInput = document.getElementById('searchBox').value.toLowerCase();
+
+            // Get all course cards
+            var courseCards = document.getElementById('courseCards').getElementsByClassName('card');
+
+            // Loop through all course cards to check if they match the search
+            for (var i = 0; i < courseCards.length; i++) {
+                var courseTitle = courseCards[i].getElementsByClassName('course-title')[0].innerText.toLowerCase();
+
+                // If the course title includes the search input, display the card, otherwise hide it
+                if (courseTitle.includes(searchInput)) {
+                    courseCards[i].classList.remove('hidden');
+                } else {
+                    courseCards[i].classList.add('hidden');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

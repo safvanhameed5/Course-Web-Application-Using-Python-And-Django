@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Left section styles (YouTube player, video title, and notes) */
+.left {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.youtube {
+    flex-grow: 1;
+}
+
+.video-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.notes {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+#notesField {
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+#saveNotesButton {
+    padding-top: 5px;
+    align: center;
+}
+/* Right section styles (Video list) */
+.right {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-left: 1px solid #ddd;
+}
+
+.video-list {
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.video {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.video:hover {
+    background-color: #f0f0f0;
+}
+
+.video h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.video p {
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+/* Add styling for scrollable video list */
+.right .video-list {
+    scrollbar-width: thin;
+    scrollbar-color: #007BFF #f0f0f0;
+}
+
+.right .video-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.right .video-list::-webkit-scrollbar-thumb {
+    background-color: #007BFF;
+}
