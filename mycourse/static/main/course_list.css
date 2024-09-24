@@ -23,6 +23,7 @@ body {
 
 .search {
     margin-bottom: 20px;
+    width: 98%;
 }
 
 .search input {
